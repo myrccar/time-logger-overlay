@@ -1,0 +1,9 @@
+hidden_startup$True
+pos_x$1%w
+pos_y$80%h
+size_x$20%w
+size_y$10%h
+new_line$True
+categories$["PE","ART","COMPUTER SCIENCE"]
+hotkey$f4
+csv_path$C:/Users/4myrc/Documents/afe logs/afe_log.csv
