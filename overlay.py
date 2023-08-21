@@ -33,11 +33,11 @@ class CustomOverlay:
 
 
     def show(self) -> None:
-        self.root.deiconify()
+        self.root.after(0, self.root.deiconify)
         self.hidden = False
 
     def hide(self) -> None:
-        self.root.withdraw()
+        self.root.after(0, self.root.withdraw)
         self.hidden = True
 
     def close(self) -> None:

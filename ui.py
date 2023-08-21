@@ -106,3 +106,4 @@ class Ui:
         self.time_input.pack_forget()
         self.time_label.pack_forget()
         self.done_add_btn.pack_forget()
+        self.time_input.delete(1)

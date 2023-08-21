@@ -5,6 +5,12 @@ from overlay import CustomOverlay
 from time_tracker_csv import TimeManagerCsv
 from ui import Ui
 import os
+import pystray
+from PIL import Image, ImageDraw
+import threading
+import queue
+
+
 
 config_manager = ConfigManager("D:/vs code stuff/time logger overlay/build/config.txt")
 overlay = CustomOverlay(
@@ -27,4 +33,25 @@ def add_time(time, category, description):
 
 ui = Ui(config_manager.get_value("categories"), overlay, add_time)
 keyboard.add_hotkey(config_manager.get_value("hotkey"), overlay.show_hide)
-overlay.run()
+#system tray
+
+# ...
+
+def start_icon():
+    icon.run()
+
+def on_select(icon, item):
+    icon.stop()  # This will stop the icon and let the rest of the program continue
+
+icon_image = Image.open(r"icon.png")
+menu = (pystray.MenuItem('Show/Hide', on_select),)
+icon = pystray.Icon("AFE Time Log", icon_image, "AFE Time Log", menu=menu)
+
+icon_thread = threading.Thread(target=start_icon)
+icon_thread.start()
+
+# Pause the main thread until the icon is stopped
+icon_thread.join()
+
+# Now the icon is stopped, so we can toggle the overlay
+overlay.show_hide()

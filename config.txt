@@ -5,5 +5,5 @@ size_x$20%w
 size_y$10%h
 new_line$True
 categories$["PE","ART","COMPUTER SCIENCE"]
-hotkey$f4
+hotkey$Ctrl+Shift+F4
 csv_path$C:/Users/4myrc/Documents/afe logs/afe_log.csv

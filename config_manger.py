@@ -1,3 +1,5 @@
+import re
+
 class ConfigManager:
     def __init__(self, file):
         self.file = file
@@ -13,11 +15,11 @@ class ConfigManager:
             return True
         elif value.lower() == "false":
             return False
-        # elif "." in value:
-        #     return float(value)
+        elif re.match("\d+\.\d+",str(value)) != None:
+             return float(value)
         elif value.isdigit():
             return int(value)
-        elif value[0] == "[" and value[len(value)-1] == "]":
+        elif re.match("^\[.*\]$",value) != None:
             return value.replace("[","").replace("]","").replace('"',"").split(",")
         else:
             return value
